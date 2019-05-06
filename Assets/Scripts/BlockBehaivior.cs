@@ -24,7 +24,7 @@ public class BlockBehaivior : MonoBehaviour
 
     private void DestoryBlock()
     {
-        FindObjectOfType<GameStatus>().AddToScore(blockPointsDestoryed);
+        FindObjectOfType<GameSession>().AddToScore(blockPointsDestoryed);
         
         AudioSource.PlayClipAtPoint(destroyAudio, Camera.main.transform.position);      // Play sound on the Main Carama position
         level.BlockIsDestoryed();               // Remove breakable block from level
