@@ -141,4 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b434d8f318bed42893f27a942922a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAudio: {fileID: 8300000, guid: c4977c4566607b943988bcca6a941957, type: 3}
+  destroyAudio: {fileID: 8300000, guid: 7cb9aeea762d6bb4f99e985aa0b7e484, type: 3}
+  blockPointsDestoryed: 12
