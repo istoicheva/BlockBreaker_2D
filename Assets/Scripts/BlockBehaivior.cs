@@ -8,18 +8,41 @@ public class BlockBehaivior : MonoBehaviour
 
     [SerializeField] AudioClip destroyAudio;
     [SerializeField] int blockPointsDestoryed = 12;
+    [SerializeField] int maxHits = 3;
 
     Level level;
+
+    [SerializeField] int hitTimes;
     
     private void Start()
     {
+        CountBreakableBlocks();
+    }
+
+    private void CountBreakableBlocks()
+    {
         level = FindObjectOfType<Level>();
-        level.CountBreakableBlocks();           // Counts breakable blocks for this level
+        if (tag == "Breakable")
+        {
+            level.CountBlock();           // Counts breakable blocks for this level
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        DestoryBlock();
+        if (tag == "Breakable")
+        {
+            HandleHit();
+        }
+    }
+
+    private void HandleHit()
+    {
+        hitTimes++;
+        if (hitTimes >= maxHits)
+        {
+            DestoryBlock();  
+        }
     }
 
     private void DestoryBlock()
