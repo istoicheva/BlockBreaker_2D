@@ -23,7 +23,10 @@ public class BallBehaiviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        paddleToBallVector = transform.position - paddle1.transform.position;
+        if (paddle1 != null)
+        {
+            paddleToBallVector = transform.position - paddle1.transform.position;
+        }
         ballAudioSource = GetComponent<AudioSource>();
     }
 
@@ -32,13 +35,21 @@ public class BallBehaiviour : MonoBehaviour
     {
         if (!hasStarted)
         {
-            LockBallToPaddle();
-            LaunchOnMouseClick();
+            if (paddle1 != null) {
+                LockBallToPaddle();
+                LaunchOnMouseClick();
+            }
+            else
+            {
+                hasStarted = true;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(xPush,yPush);
+            }
         }
     }
 
     private void LockBallToPaddle()
     {
+
         Vector2 paddlePosition = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y);
         transform.position = paddlePosition + paddleToBallVector;
     }
