@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unbreable Block (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4247631773754673746, guid: f29783f9f0a48d44a8efdf1a07c876a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4247631773754673756, guid: f29783f9f0a48d44a8efdf1a07c876a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -366,6 +371,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unbreable Block (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4247631773754673746, guid: f29783f9f0a48d44a8efdf1a07c876a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4247631773754673756, guid: f29783f9f0a48d44a8efdf1a07c876a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -578,6 +588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Unbreable Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247631773754673746, guid: f29783f9f0a48d44a8efdf1a07c876a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4247631773754673756, guid: f29783f9f0a48d44a8efdf1a07c876a0,
         type: 3}

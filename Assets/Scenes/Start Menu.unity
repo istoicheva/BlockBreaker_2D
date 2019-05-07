@@ -326,6 +326,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breable Block
       objectReference: {fileID: 0}
+    - target: {fileID: 4247631773754673746, guid: 6fcae314b831dab4484de26066cf565f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Unbreakable
+      objectReference: {fileID: 0}
     - target: {fileID: 4247631773754673756, guid: 6fcae314b831dab4484de26066cf565f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2116,6 +2121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Breable Block (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247631773754673746, guid: 6fcae314b831dab4484de26066cf565f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Unbreakable
       objectReference: {fileID: 0}
     - target: {fileID: 4247631773754673756, guid: 6fcae314b831dab4484de26066cf565f,
         type: 3}

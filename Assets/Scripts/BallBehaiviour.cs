@@ -11,6 +11,7 @@ public class BallBehaiviour : MonoBehaviour
     [SerializeField] float xPush = 2f;
     [SerializeField] float yPush = 15f;
     [SerializeField] AudioClip[] ballSounds;
+    [SerializeField] float loopAvoidingVariable = 0.2f;
 
     // State
     Vector2 paddleToBallVector;
@@ -19,6 +20,7 @@ public class BallBehaiviour : MonoBehaviour
 
     // Cached component references
     AudioSource ballAudioSource;
+    Rigidbody2D ballRigidBody;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class BallBehaiviour : MonoBehaviour
         {
             paddleToBallVector = transform.position - paddle1.transform.position;
         }
+        ballRigidBody = GetComponent<Rigidbody2D>();
         ballAudioSource = GetComponent<AudioSource>();
     }
 
@@ -42,7 +45,7 @@ public class BallBehaiviour : MonoBehaviour
             else
             {
                 hasStarted = true;
-                GetComponent<Rigidbody2D>().velocity = new Vector2(xPush,yPush);
+                ballRigidBody.velocity = new Vector2(xPush,yPush);
             }
         }
     }
@@ -59,16 +62,30 @@ public class BallBehaiviour : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             hasStarted = true;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(xPush,yPush);
+            ballRigidBody.velocity = new Vector2(xPush,yPush);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Vector2 velocityTweak = new Vector2(UnityEngine.Random.Range(0f, loopAvoidingVariable), UnityEngine.Random.Range(0f, loopAvoidingVariable));
+        GameObject collidedGameObject = collision.gameObject;
         if (hasStarted)
         {
-            AudioClip clip = ballSounds[UnityEngine.Random.Range(0, ballSounds.Length)];
-            ballAudioSource.PlayOneShot(clip);      // Play the whole way though, and not be interupted
+            if (collidedGameObject.tag == "Breakable")
+            {
+                if (collidedGameObject.GetComponent<BlockBehaivior>().GetTimesHit() < collidedGameObject.GetComponent<BlockBehaivior>().GetMaxHits()) 
+                {
+                    AudioClip clip = ballSounds[UnityEngine.Random.Range(0, ballSounds.Length)];
+                    ballAudioSource.PlayOneShot(clip);      // Play the whole way though, and not be interupted
+                }
+            }
+            else 
+            {
+                AudioClip clip = ballSounds[UnityEngine.Random.Range(0, ballSounds.Length)];
+                ballAudioSource.PlayOneShot(clip);      // Play the whole way though, and not be interupted
+            }
+
         }
     }
 }

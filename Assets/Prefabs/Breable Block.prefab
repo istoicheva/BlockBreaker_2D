@@ -143,3 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAudio: {fileID: 8300000, guid: 7cb9aeea762d6bb4f99e985aa0b7e484, type: 3}
   blockPointsDestoryed: 12
+  damageSprites:
+  - {fileID: 21300000, guid: f3457b27b21692d45a27465ef91d1f01, type: 3}
+  - {fileID: 21300000, guid: 28c0174cd778bf8468a7717325d607d5, type: 3}
+  maxHits: 3
+  hitTimes: 0

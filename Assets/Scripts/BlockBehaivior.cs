@@ -8,6 +8,7 @@ public class BlockBehaivior : MonoBehaviour
 
     [SerializeField] AudioClip destroyAudio;
     [SerializeField] int blockPointsDestoryed = 12;
+    [SerializeField] Sprite[] damageSprites;
     [SerializeField] int maxHits = 3;
 
     Level level;
@@ -43,6 +44,23 @@ public class BlockBehaivior : MonoBehaviour
         {
             DestoryBlock();  
         }
+        else
+        {
+            ShowNextHitSprite();
+        }
+    }
+
+    private void ShowNextHitSprite()
+    {
+        int spriteIndex = hitTimes - 1;
+        if (damageSprites[spriteIndex] != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = damageSprites[spriteIndex];
+        }
+        else
+        {
+            Debug.LogError("Block sprite is missing from array!");
+        }
     }
 
     private void DestoryBlock()
@@ -53,5 +71,15 @@ public class BlockBehaivior : MonoBehaviour
         level.BlockIsDestoryed();               // Remove breakable block from level
 
         Destroy(gameObject);                                                            // Destory block
+    }
+
+    public int GetTimesHit()
+    {
+        return hitTimes;
+    }
+
+    public int GetMaxHits()
+    {
+        return maxHits;
     }
 }
